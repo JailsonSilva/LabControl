@@ -4,10 +4,12 @@ import conexao.Conexao;
 import conexao.Teste;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -209,6 +211,7 @@ public class ReservaTela extends javax.swing.JPanel {
         
 	t.setConexao(new Conexao());
         try {
+            
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -217,8 +220,20 @@ public class ReservaTela extends javax.swing.JPanel {
         }
 		
         try { // Reservar horario do laboratorio
-            t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), Login.getUsuario(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
-        } catch (SQLException ex) {
+            t.getConexao().retornarReserva();
+            ArrayList<modelo.Reserva> dados = t.getConexao().retornarReserva();
+            
+            int i = 0;
+            
+            while(i < dados.size()){ // percorre os dados
+                if(dados.get(i).getData().equals(this.getFieldData().getText())){ // Checa se ja possui reserva
+                    JOptionPane.showMessageDialog(null, "Ja possui uma reserva neste horario!");
+                }
+                else{ // se não possuir resrva
+                t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), Login.getUsuario(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
+                }
+            } // fim do while()
+            } catch (SQLException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim de inserir pessoa
     }//GEN-LAST:event_botaoConfirmarActionPerformed

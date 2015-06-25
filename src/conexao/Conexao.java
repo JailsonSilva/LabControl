@@ -26,13 +26,18 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     @Override
     public String logar(String cpf, String senha) throws SQLException{
         
-        setConfirmacao(getConexao().createStatement());
-        String sql = "select nome from pessoa where cpf = " + cpf + " and senha = '" + senha + "';";
-        getConfirmacao().executeQuery(sql);
-                
+       //executando a consulta
+	setConfirmacao(getConexao().createStatement());
         
+        setRetorno(getConfirmacao().executeQuery("select nome from pessoa where cpf = " + cpf + " and senha = '" + senha + "';"));
+        
+        if(getRetorno().next()){
             String nome = getRetorno().getString("nome");
             return nome;
+        }
+        else{
+            return null;
+        }
         
     }// fim do metodo logar()
     /*
