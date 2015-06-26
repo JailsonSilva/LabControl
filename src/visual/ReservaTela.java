@@ -220,19 +220,9 @@ public class ReservaTela extends javax.swing.JPanel {
         }
 		
         try { // Reservar horario do laboratorio
-            t.getConexao().retornarReserva();
-            ArrayList<modelo.Reserva> dados = t.getConexao().retornarReserva();
             
-            int i = 0;
+            t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), Login.getCpf(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
             
-            while(i < dados.size()){ // percorre os dados
-                if(dados.get(i).getData().equals(this.getFieldData().getText())){ // Checa se ja possui reserva
-                    JOptionPane.showMessageDialog(null, "Ja possui uma reserva neste horario!");
-                }
-                else{ // se não possuir resrva
-                t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), Login.getUsuario(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
-                }
-            } // fim do while()
             } catch (SQLException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim de inserir pessoa

@@ -20,6 +20,8 @@ public class Login extends javax.swing.JPanel {
      * Creates new form Login
      */
     private static String usuario;
+    private static String cpf;
+    
     public Login() {
         initComponents();
         
@@ -29,11 +31,16 @@ public class Login extends javax.swing.JPanel {
     public static String getUsuario(){
         return usuario;
     }
+    public static String getCpf(){
+        return cpf;
+    }
     // seter da variavel
     public void setUsuario(String usuario){
         this.usuario = usuario;
     }
-    
+    public void setCpf(String cpf){
+        this.cpf = cpf;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,9 +181,10 @@ public class Login extends javax.swing.JPanel {
         try { // pesquisar reservas no banco
             t.getConexao().logar(this.getFieldCpf().getText(), senha);
             String nome = t.getConexao().logar(this.getFieldCpf().getText(), senha);
-            System.out.println(nome);
+
             if(nome != null){
                 this.setUsuario(nome);//setUsuario();
+                this.setCpf(this.getFieldCpf().getText());
                 JOptionPane.showMessageDialog(null, "Bem vindo(a) " + nome + "!");
             }
             else{

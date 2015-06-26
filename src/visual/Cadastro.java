@@ -234,22 +234,9 @@ public class Cadastro extends javax.swing.JPanel {
         }
 		
         try { // inserir pessoa no banco
-            t.getConexao().retornarPessoa();
-            ArrayList<modelo.entidade.Pessoa> dados = t.getConexao().retornarPessoa();
             
-            int i = 0;
+            t.getConexao().inserirPessoa(this.getFieldNome().getText(), this.getFieldCpf().getText(), new String(getFieldSenha().getPassword()));
             
-            while(i < dados.size()){
-                if(dados.get(i).getCpf().equals(this.getFieldCpf().getText())){
-                    JOptionPane.showMessageDialog(null, "Este CPF ja esta cadastrado!");
-                }
-                else if(this.getFieldSenha().getPassword() != this.getFieldConfSenha().getPassword()){
-                    JOptionPane.showMessageDialog(null, "As senhas não são iguais nos campos 'senha' e 'confirmar senha'");
-                }
-                else{
-                    t.getConexao().inserirPessoa(this.getFieldNome().getText(), this.getFieldCpf().getText(), new String(getFieldSenha().getPassword()));
-                }
-            }
             if(this.getRadioButtonAluno().isSelected()){ // inserir curso
                 t.getConexao().inserirCurso(this.getFieldCurso().getText());
             } // fim inserir curso

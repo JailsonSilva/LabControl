@@ -2,7 +2,6 @@ package conexao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import modelo.entidade.Aluno;
 import modelo.entidade.Funcionario;
 import modelo.entidade.Pessoa;
@@ -124,10 +123,30 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do método retornarPessoa()
     
     @Override
-    public void reservarHorario(String lab, String nome, String data, String horaInicial, String horaFinal) throws SQLException {
+    public void reservarHorario(String lab, String cpf, String data, String horaInicial, String horaFinal) throws SQLException {
         setConfirmacao(getConexao().createStatement());
-        String sql = "insert into reserva(laboratorio, nome, data, horaInicial, horaFinal) values ('"+lab+"', '"+nome+"', '"+data+"', '"+horaInicial+"', '"+horaFinal+"');";
+        String codPessoa = retornarCodPessoa(cpf);
+        String sql = "insert into reserva(laboratorio, idPessoa, data, horaInicial, horaFinal) values ('"+lab+"', '"+codPessoa+"', '"+data+"', '"+horaInicial+"', '"+horaFinal+"');";
         getConfirmacao().executeUpdate(sql);
+    } // fim de reservarHorario()
+    
+    /*
+        retornar CodPessoa
+    */
+    @Override
+    public String retornarCodPessoa(String cpf) throws SQLException{
+        
+        
+        setConfirmacao(getConexao().createStatement());
+        setRetorno(getConfirmacao().executeQuery("select codPessoa from labcontrol.pessoa where cpf = " + cpf + ";"));
+        
+        if(getRetorno().next()){
+            String codPessoa = getRetorno().getString("CodPessoa");
+            return codPessoa;
+        }
+        else{
+            return null;
+        }
     }
     
     /*
