@@ -169,21 +169,11 @@ public class Administracao extends javax.swing.JPanel {
         }
 		
         try { // pesquisar pessoas no banco
-            t.getConexao().retornarPessoa();
-            ArrayList<modelo.entidade.Pessoa> dados = t.getConexao().retornarPessoa();
+            t.getConexao().retornarDadosPessoa();
+            ArrayList<String> dados = t.getConexao().retornarDadosPessoa();
             
+            this.fieldPessoa.setText("Nome: CPF:        \n\n" + dados);
             
-            int i = 0;
-            ArrayList<String> dadosPessoa = new ArrayList();
-            
-            while(i < dados.size()){
-                
-                dadosPessoa.add(dados.get(i).getNome());
-                dadosPessoa.add(dados.get(i).getCpf());
-                
-                i++;
-            }
-            this.fieldPessoa.setText("Nome: CPF:        \n\n" + dadosPessoa);
         } catch (SQLException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de pessoas cadastradas
@@ -202,24 +192,14 @@ public class Administracao extends javax.swing.JPanel {
         }
 		
         try { // pesquisar pessoas no banco
-            t.getConexao().retornarPessoa();
-            ArrayList<modelo.entidade.Pessoa> dados = t.getConexao().retornarPessoa();
+                        
+            t.getConexao().retornarLabDisponivel();
+            ArrayList<String> dadosLab = t.getConexao().retornarLabDisponivel();
             
-            
-            int i = 0;
-            ArrayList<String> dadosPessoa = new ArrayList();
-            
-            while(i < dados.size()){
-                
-                dadosPessoa.add(dados.get(i).getNome());
-                dadosPessoa.add(dados.get(i).getCpf());
-                
-                i++;
-            }
-            this.fieldPessoa.setText("Nome: CPF:        \n\n" + dadosPessoa);
+            this.fieldLaboratorio.setText("Laboratorio:\n\n" + dadosLab);
         } catch (SQLException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
-        } // fim da pesquisa de laboratorios mais reservados cadastradas
+        } // fim da pesquisa de pessoas cadastradas
     }//GEN-LAST:event_botaoPesquisarLabActionPerformed
 
 

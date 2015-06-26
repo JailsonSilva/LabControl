@@ -155,7 +155,7 @@ public class Pesquisa extends javax.swing.JPanel implements interfaces.IManipula
             while(i < dados.size()){
                 
                 dadosReserva.add("    " + dados.get(i).getLaboratorio() + "    ");
-                dadosReserva.add(dados.get(i).getNome());
+                dadosReserva.add(dados.get(i).getIdPessoa());
                 dadosReserva.add(dados.get(i).getHoraInicial());
                 dadosReserva.add(dados.get(i).getHoraFinal());
                 dadosReserva.add(dados.get(i).getData() + "\n");

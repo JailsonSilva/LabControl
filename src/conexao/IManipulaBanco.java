@@ -17,8 +17,9 @@ public interface IManipulaBanco {
         public void alterarReserva() throws SQLException;
         public void excluirReserva() throws SQLException;
  	public ArrayList<modelo.entidade.Pessoa> retornarPessoa() throws SQLException;
+        public ArrayList<String> retornarDadosPessoa() throws SQLException;
         public ArrayList<modelo.Reserva> retornarReserva() throws SQLException;
         public ArrayList<modelo.Reserva> retornarReservaLab(String lab) throws SQLException;
-        public ArrayList<modelo.Reserva> retornarLabDisponivel(String hora) throws SQLException;
+        public ArrayList<String> retornarLabDisponivel() throws SQLException;
 
 }

@@ -151,6 +151,7 @@ public class Inicio extends javax.swing.JPanel {
 		
         try { // pesquisar reservas no banco
             t.getConexao().retornarReserva();
+            
             ArrayList<modelo.Reserva> dados = t.getConexao().retornarReserva();
             ModeloTabela modelo = new ModeloTabela(dados);
             
@@ -160,14 +161,15 @@ public class Inicio extends javax.swing.JPanel {
             while(i > 0){
                 
                 dadosReserva.add("    " + dados.get(i).getLaboratorio() + "    ");
-                dadosReserva.add(dados.get(i).getNome());
+                dadosReserva.add(dados.get(i).getIdPessoa());
                 dadosReserva.add(dados.get(i).getHoraInicial());
                 dadosReserva.add(dados.get(i).getHoraFinal());
                 dadosReserva.add(dados.get(i).getData() + "\n");
                 
                 i--;
             }
-            this.tabelaReserva.setText("Laboratório: Nome: Hora Inicial:  Hora Final:  Data:  \n\n" + dadosReserva);
+            this.tabelaReserva.setText("Laboratório: idPessoa: Hora Inicial:  Hora Final:  Data:  \n\n" + dadosReserva);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de reservas

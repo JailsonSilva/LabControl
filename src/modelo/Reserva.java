@@ -3,14 +3,14 @@ package modelo;
 public class Reserva {
     
     private String laboratorio;
-    private String nome;
+    private String idPessoa;
     private String horaInicial;
     private String horaFinal;
     private String data;
     
-    public Reserva(String laboratorio, String nome, String horaInicial, String horaFinal, String data){
+    public Reserva(String laboratorio, String idPessoa, String horaInicial, String horaFinal, String data){
         this.laboratorio = laboratorio;
-        this.nome = nome;
+        this.idPessoa = idPessoa;
         this.horaInicial = horaInicial;
         this.horaFinal = horaFinal;
         this.data = data;
@@ -20,8 +20,8 @@ public class Reserva {
     public String getLaboratorio(){
         return laboratorio;
     }
-    public String getNome(){
-        return nome;
+    public String getIdPessoa(){
+        return idPessoa;
     }
     public String getHoraInicial(){
         return horaInicial;

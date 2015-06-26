@@ -123,6 +123,39 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do método retornarPessoa()
     
     @Override
+    public ArrayList<String> retornarDadosPessoa() throws SQLException {
+		
+	//array list dos dados
+	ArrayList<String> dados = new ArrayList<>();
+	Pessoa pessoa;
+		
+	//executando a consulta
+	setConfirmacao(getConexao().createStatement());
+
+    	setRetorno(getConfirmacao().executeQuery("select nome, cpf from pessoa"));
+		
+		
+	//testando se houve retorno
+	if (getRetorno().next()) {
+			
+            //colocando no primeiro registro
+            getRetorno().previous();
+			
+            //recuperando todos os dados
+            while (getRetorno().next()){
+                
+                String nome = getRetorno().getString("nome");
+                String cpf = getRetorno().getString("cpf");
+                
+                dados.add(nome);
+                dados.add(cpf + "\n");
+            }
+        }		
+            //retornando
+            return dados;
+    } // fim do método retornarDadosPessoa()
+    
+    @Override
     public void reservarHorario(String lab, String cpf, String data, String horaInicial, String horaFinal) throws SQLException {
         setConfirmacao(getConexao().createStatement());
         String codPessoa = retornarCodPessoa(cpf);
@@ -174,12 +207,12 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             while (getRetorno().next()){
                 
                 String laboratorio = getRetorno().getString("laboratorio");
-                String nome = getRetorno().getString("nome");
+                String idPessoa = getRetorno().getString("idPessoa");
                 String horaInicial = getRetorno().getString("horaInicial");
                 String horaFinal = getRetorno().getString("horaFinal");
                 String data = getRetorno().getString("data");
                 
-                mReserva = new Reserva(laboratorio, nome, horaInicial, horaFinal, data);
+                mReserva = new Reserva(laboratorio, idPessoa, horaInicial, horaFinal, data);
                 
                 dados.add(mReserva);
             }
@@ -231,17 +264,17 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
         Retorna laboratorios disponiveis
     */
     @Override
-    public ArrayList<modelo.Reserva> retornarLabDisponivel(String hora) throws SQLException {
+    public ArrayList<String> retornarLabDisponivel() throws SQLException {
 		
 	//array list dos dados
-	ArrayList<modelo.Reserva> dados = new ArrayList<>();
+	ArrayList<String> dados = new ArrayList<>();
 	Reserva mReserva;
 		
 	//executando a consulta
 	setConfirmacao(getConexao().createStatement());
 
-    	setRetorno(getConfirmacao().executeQuery("select L.numero from L.laboratorio, R.reserva where L.numero = R.laboratorio and"
-                + " and " + hora ));
+    	setRetorno(getConfirmacao().executeQuery("select numero from laboratorio where not exists(select laboratorio from reserva "
+                + "where reserva.horaFinal >= current_time() and reserva.data = current_date() and reserva.laboratorio = laboratorio.numero)"));
 		
 	//testando se houve retorno
 	if (getRetorno().next()) {
@@ -252,15 +285,9 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             //recuperando todos os dados
             while (getRetorno().next()){
                 
-                String laboratorio = getRetorno().getString("laboratorio");
-                String nome = getRetorno().getString("nome");
-                String horaInicial = getRetorno().getString("horaInicial");
-                String horaFinal = getRetorno().getString("horaFinal");
-                String data = getRetorno().getString("data");
+                String dado = getRetorno().getString("numero");
+                dados.add(dado + "\n");
                 
-                mReserva = new Reserva(laboratorio, nome, horaInicial, horaFinal, data);
-                
-                dados.add(mReserva);
             }
         }		
             //retornando
