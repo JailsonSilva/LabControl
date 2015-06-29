@@ -89,7 +89,7 @@ public class Administracao extends javax.swing.JPanel {
         labelPessoasCadastrdas.setText("Pessoas cadastradas:");
 
         labelPessoasCadastrdas1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelPessoasCadastrdas1.setText("Laboratórios cadastrados:");
+        labelPessoasCadastrdas1.setText("Laboratórios disponíveis:");
 
         botaoPesquisarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         botaoPesquisarLab.setText("Pesquisar");
