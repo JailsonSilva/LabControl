@@ -1,5 +1,6 @@
 package visual;
 
+
 import conexao.JDBconexao;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -10,9 +11,12 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
- * @author Alucarde
+ * Classe responsável pela vilualização ddos paineis com conteudo visual
+ * @Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realize 01 da aplicação
  */
+
 public class Tela extends javax.swing.JFrame implements interfaces.IVisual{
 
     /**
