@@ -8,18 +8,19 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import modelo.ModeloTabela;
 
 /**
  *
  * @author Cloud
  */
-public class Inicio extends javax.swing.JPanel {
+public class TelaInicio extends javax.swing.JPanel {
 
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public TelaInicio() {
         initComponents();
     }
 
@@ -39,9 +40,9 @@ public class Inicio extends javax.swing.JPanel {
         painelRodape = new javax.swing.JPanel();
         botaoAtualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaReserva = new javax.swing.JTextArea();
+        fieldReservas = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaLaboratorios = new javax.swing.JTextArea();
+        fieldLaboratorios = new javax.swing.JTextArea();
 
         labelUltReservas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labelUltReservas.setText("Ultimas reservas realizadas:");
@@ -97,13 +98,13 @@ public class Inicio extends javax.swing.JPanel {
                 .addGap(27, 27, 27))
         );
 
-        tabelaReserva.setColumns(20);
-        tabelaReserva.setRows(5);
-        jScrollPane1.setViewportView(tabelaReserva);
+        fieldReservas.setColumns(20);
+        fieldReservas.setRows(5);
+        jScrollPane1.setViewportView(fieldReservas);
 
-        tabelaLaboratorios.setColumns(20);
-        tabelaLaboratorios.setRows(5);
-        jScrollPane2.setViewportView(tabelaLaboratorios);
+        fieldLaboratorios.setColumns(20);
+        fieldLaboratorios.setRows(5);
+        jScrollPane2.setViewportView(fieldLaboratorios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,9 +145,9 @@ public class Inicio extends javax.swing.JPanel {
         try {
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // pesquisar reservas no banco
@@ -168,16 +169,21 @@ public class Inicio extends javax.swing.JPanel {
                 
                 i--;
             }
-            this.tabelaReserva.setText("Laboratório: idPessoa: Hora Inicial:  Hora Final:  Data:  \n\n" + dadosReserva);
+            this.fieldReservas.setText("Laboratório: idPessoa: Hora Inicial:  Hora Final:  Data:  \n\n" + dadosReserva);
+            t.getConexao().retornarLabDisponivel();
+            ArrayList<String> dadosLab = t.getConexao().retornarLabDisponivel();
             
+            this.fieldLaboratorios.setText("Laboratorio:\n\n" + dadosLab);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de reservas
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAtualizar;
+    private javax.swing.JTextArea fieldLaboratorios;
+    private javax.swing.JTextArea fieldReservas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelLabDisponiveis;
@@ -185,22 +191,22 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel labelUltReservas;
     private javax.swing.JPanel painelRodape;
     private javax.swing.JPanel painelTitulo;
-    private javax.swing.JTextArea tabelaLaboratorios;
-    private javax.swing.JTextArea tabelaReserva;
     // End of variables declaration//GEN-END:variables
     
-    /*
+    
     // geters dos componentes
-    public JTable getTablaUltReservas(){
-        return tableUltReservas;
+    public JTextArea getFieldReservas(){
+        return fieldReservas;
     }
-    public JTable getTableLabDisponiveis(){
-        return tableLabDisponiveis;
+    public JTextArea getFieldLaboratorios(){
+        return fieldLaboratorios;
     }
     
     // seters dos componentes
-    public void setTableUltReservas(JTable tabela){
-        this.tableUltReservas = tabela;
+    public void setFieldtReservas(JTextArea field){
+        this.fieldReservas = field;
     }
-    */
+    public void setFieldLaboratorios(JTextArea field){
+        this.fieldLaboratorios = field;
+    }
 }

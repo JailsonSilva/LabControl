@@ -17,14 +17,14 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @since realize 01 da aplicação
  */
 
-public class Tela extends javax.swing.JFrame implements interfaces.IVisual{
+public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IManipulacaoVisual{
 
     /**
-     * Creates new form Tela
+     * Creates new form TelaPrincipal
      */
     private static boolean logado;
     
-    public Tela() {
+    public TelaPrincipal() {
         initComponents();
         this.logado = true;
     }
@@ -205,7 +205,7 @@ public class Tela extends javax.swing.JFrame implements interfaces.IVisual{
         try {
             exibirReserva();
         } catch (ParseException ex) {
-            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botaoReservaActionPerformed
 
@@ -236,17 +236,17 @@ public class Tela extends javax.swing.JFrame implements interfaces.IVisual{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         */
         //</editor-fold>
-        Tela tela = new Tela();
+        TelaPrincipal tela = new TelaPrincipal();
         JDBconexao conexao = new JDBconexao();
         
         conexao.conectar();
@@ -272,55 +272,55 @@ public class Tela extends javax.swing.JFrame implements interfaces.IVisual{
     
     private void exibirLogin(){
         getContentPane().remove(this.painelPrincipal);
-        painelPrincipal = new Login();
+        painelPrincipal = new TelaLogin();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     
     private void exibirInicio(){
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new Inicio();
+        this.painelPrincipal = new TelaInicio();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     
     private void exibirCadastro(){
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new Cadastro();
+        this.painelPrincipal = new TelaCadastro();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     
     private void exibirPesquisa(){
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new Pesquisa();
+        this.painelPrincipal = new TelaPesquisa();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     private void exibirReserva() throws ParseException{
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new ReservaTela();
+        this.painelPrincipal = new TelaReserva();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     
     private void exibirAjuda(){
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new Ajuda();
+        this.painelPrincipal = new TelaAjuda();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     
     private void exibirEmpresa(){
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new Empresa();
+        this.painelPrincipal = new TelaEmpresa();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
     
     private void exibirAdmin(){
         getContentPane().remove(this.painelPrincipal);
-        this.painelPrincipal = new Administracao();
+        this.painelPrincipal = new TelaAdministracao();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
@@ -341,8 +341,5 @@ public class Tela extends javax.swing.JFrame implements interfaces.IVisual{
     private javax.swing.JPanel painelPrincipal;
     // End of variables declaration//GEN-END:variables
     
-    @Override
-    public void exibir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

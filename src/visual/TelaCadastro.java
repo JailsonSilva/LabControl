@@ -16,10 +16,10 @@ import javax.swing.JTextField;
  *
  * @author Alucarde
  */
-public class Cadastro extends javax.swing.JPanel {
+public class TelaCadastro extends javax.swing.JPanel {
 
     /**
-     * Creates new form Cadastro
+     * Creates new form TelaCadastro
      */
     JDBconexao con;
     
@@ -28,7 +28,7 @@ public class Cadastro extends javax.swing.JPanel {
             //+ this.getFieldCpf().getText() + ", "
             //+ Arrays.toString(this.getFieldSenha().getPassword()) + ")";
     
-    public Cadastro() {
+    public TelaCadastro() {
         initComponents();
     }
 
@@ -228,9 +228,9 @@ public class Cadastro extends javax.swing.JPanel {
         try {
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // inserir pessoa no banco
@@ -246,7 +246,7 @@ public class Cadastro extends javax.swing.JPanel {
             } // fim inserir cargo
             
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim de inserir pessoa
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 

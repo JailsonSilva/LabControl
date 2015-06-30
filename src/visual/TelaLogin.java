@@ -15,14 +15,14 @@ import javax.swing.JTextField;
  *
  * @author Alucarde
  */
-public class Login extends javax.swing.JPanel {
+public class TelaLogin extends javax.swing.JPanel {
     /**
-     * Creates new form Login
+     * Creates new form TelaLogin
      */
     private static String usuario;
     private static String cpf;
     
-    public Login() {
+    public TelaLogin() {
         initComponents();
         
     }
@@ -173,9 +173,9 @@ public class Login extends javax.swing.JPanel {
         try {
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // pesquisar reservas no banco
@@ -192,7 +192,7 @@ public class Login extends javax.swing.JPanel {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de reservas
 
     }//GEN-LAST:event_buttonAcessarActionPerformed

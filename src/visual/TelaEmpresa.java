@@ -4,12 +4,12 @@ package visual;
  *
  * @author Cloud
  */
-public class Empresa extends javax.swing.JPanel {
+public class TelaEmpresa extends javax.swing.JPanel {
 
     /**
      * Creates new form Empresa
      */
-    public Empresa() {
+    public TelaEmpresa() {
         initComponents();
     }
 

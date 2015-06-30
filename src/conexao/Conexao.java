@@ -1,5 +1,6 @@
 package conexao;
 
+import interfaces.IManipulaBanco;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.entidade.Aluno;
@@ -10,13 +11,13 @@ import visual.*;
 
 public class Conexao extends JDBconexao implements IManipulaBanco {
         
-    Administracao administracao;
-    Ajuda ajuda;
-    Cadastro cadastro;
-    Empresa empresa;
-    Inicio inicio;
-    Login login;
-    Pesquisa pesquisa = new Pesquisa();
+    TelaAdministracao administracao;
+    TelaAjuda ajuda;
+    TelaCadastro cadastro;
+    TelaEmpresa empresa;
+    TelaInicio inicio;
+    TelaLogin login;
+    TelaPesquisa pesquisa = new TelaPesquisa();
     Reserva reserva;
     
     /*

@@ -1,8 +1,8 @@
 package modelo.entidade;
 
-import interfaces.IManipulacao;
+import interfaces.IManipulacaoVisual;
 
-public abstract class Pessoa implements IManipulacao{
+public abstract class Pessoa implements IManipulacaoVisual{
 	
 	private String nome;
 	private String senha;

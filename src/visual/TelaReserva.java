@@ -16,7 +16,7 @@ import javax.swing.text.MaskFormatter;
  *
  * @author Alucarde
  */
-public class ReservaTela extends javax.swing.JPanel {
+public class TelaReserva extends javax.swing.JPanel {
 
     /**
      * Creates new form Pesquisar
@@ -24,7 +24,7 @@ public class ReservaTela extends javax.swing.JPanel {
     
     MaskFormatter formHora;
     MaskFormatter formData;
-    public ReservaTela() throws ParseException {
+    public TelaReserva() throws ParseException {
         initComponents();
         this.formHora = new MaskFormatter("##/##");
         this.formData = new MaskFormatter("##/##/####");
@@ -214,17 +214,17 @@ public class ReservaTela extends javax.swing.JPanel {
             
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // Reservar horario do laboratorio
             
-            t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), Login.getCpf(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
+            t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), TelaLogin.getCpf(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
             
             } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim de inserir pessoa
     }//GEN-LAST:event_botaoConfirmarActionPerformed
     

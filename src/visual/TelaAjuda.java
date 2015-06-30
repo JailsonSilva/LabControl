@@ -7,12 +7,12 @@ import javax.swing.JTextField;
  *
  * @author Cloud
  */
-public class Ajuda extends javax.swing.JPanel {
+public class TelaAjuda extends javax.swing.JPanel {
 
     /**
      * Creates new form Ajuda
      */
-    public Ajuda() {
+    public TelaAjuda() {
         initComponents();
     }
 

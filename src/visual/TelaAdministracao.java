@@ -12,12 +12,12 @@ import modelo.ModeloTabela;
  *
  * @author Cloud
  */
-public class Administracao extends javax.swing.JPanel {
+public class TelaAdministracao extends javax.swing.JPanel {
 
     /**
      * Creates new form Inicio
      */
-    public Administracao() {
+    public TelaAdministracao() {
         initComponents();
     }
 
@@ -89,7 +89,7 @@ public class Administracao extends javax.swing.JPanel {
         labelPessoasCadastrdas.setText("Pessoas cadastradas:");
 
         labelPessoasCadastrdas1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelPessoasCadastrdas1.setText("Laboratórios disponíveis:");
+        labelPessoasCadastrdas1.setText("Laboratórios Cadastrados:");
 
         botaoPesquisarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         botaoPesquisarLab.setText("Pesquisar");
@@ -163,9 +163,9 @@ public class Administracao extends javax.swing.JPanel {
         try {
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // pesquisar pessoas no banco
@@ -175,7 +175,7 @@ public class Administracao extends javax.swing.JPanel {
             this.fieldPessoa.setText("Nome: CPF:        \n\n" + dados);
             
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de pessoas cadastradas
     }//GEN-LAST:event_botaoPesquisarPessoaActionPerformed
 
@@ -186,9 +186,9 @@ public class Administracao extends javax.swing.JPanel {
         try {
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // pesquisar pessoas no banco
@@ -198,7 +198,7 @@ public class Administracao extends javax.swing.JPanel {
             
             this.fieldLaboratorio.setText("Laboratorio:\n\n" + dadosLab);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de pessoas cadastradas
     }//GEN-LAST:event_botaoPesquisarLabActionPerformed
 

@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
-import visual.Administracao;
-import visual.Ajuda;
-import visual.Cadastro;
-import visual.Empresa;
-import visual.Inicio;
-import visual.Login;
-import visual.Pesquisa;
-import visual.ReservaTela;
+import visual.TelaAdministracao;
+import visual.TelaAjuda;
+import visual.TelaCadastro;
+import visual.TelaEmpresa;
+import visual.TelaInicio;
+import visual.TelaLogin;
+import visual.TelaPesquisa;
+import visual.TelaReserva;
 
 
 public class JDBconexao {

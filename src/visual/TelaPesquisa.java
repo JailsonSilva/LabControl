@@ -14,14 +14,14 @@ import modelo.ModeloTabela;
  *
  * @author Cloud
  */
-public class Pesquisa extends javax.swing.JPanel implements interfaces.IManipulacao{
+public class TelaPesquisa extends javax.swing.JPanel implements interfaces.IManipulacaoVisual{
 
     /**
-     * Creates new form Pesquisa
+     * Creates new form TelaPesquisa
      */
-    Tela tela;
+    TelaPrincipal tela;
     JPanel novoPainel;
-    public Pesquisa() {
+    public TelaPesquisa() {
         initComponents();
     }
     
@@ -139,9 +139,9 @@ public class Pesquisa extends javax.swing.JPanel implements interfaces.IManipula
         try {
             t.getConexao().conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
         try { // pesquisar reservas no banco
@@ -164,7 +164,7 @@ public class Pesquisa extends javax.swing.JPanel implements interfaces.IManipula
             }
             this.tabelaReserva.setText("Laboratório: Nome: Hora Inicial:  Hora Final:  Data:  \n\n" + dadosReserva);
         } catch (SQLException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } // fim da pesquisa de reservas
     }//GEN-LAST:event_botaoPesquisarActionPerformed
     
