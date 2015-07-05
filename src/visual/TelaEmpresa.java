@@ -1,13 +1,15 @@
 package visual;
 
 /**
- *
- * @author Cloud
+ * Classe para criação da tela empresa
+ * @author Jailson Joé dos Santos Silva
+ * @version 1.0
+ * @since  realese 01 da aplicação
  */
 public class TelaEmpresa extends javax.swing.JPanel {
 
     /**
-     * Creates new form Empresa
+     * Construtor da classe Empresa
      */
     public TelaEmpresa() {
         initComponents();

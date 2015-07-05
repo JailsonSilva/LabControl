@@ -3,12 +3,19 @@ package conexao;
 import interfaces.IManipulaBanco;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelo.entidade.Aluno;
-import modelo.entidade.Funcionario;
-import modelo.entidade.Pessoa;
+import modelo.Aluno;
+import modelo.Funcionario;
+import modelo.Pessoa;
 import modelo.Reserva;
 import visual.*;
 
+/**
+ * Classe com os métodos a serem utilizados para captura e alteração de dados
+ * contidos no banco de dados 
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realeise 01 da aplicação
+ */
 public class Conexao extends JDBconexao implements IManipulaBanco {
         
     TelaAdministracao administracao;
@@ -21,7 +28,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     Reserva reserva;
     
     /*
-        Logar no programa
+     * Sobrescrita do contrato logar da interface IManipulacaoBanco
     */
     @Override
     public String logar(String cpf, String senha) throws SQLException{
@@ -40,8 +47,9 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
         }
         
     }// fim do metodo logar()
+    
     /*
-        Inserir pessoa no banco
+     * Sobrescrita do contrato inseriPessoa da interface IManipulacaoBanco
     */
     @Override
     public void inserirPessoa(String nome, String cpf, String senha) throws SQLException {
@@ -52,7 +60,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do metodo inserirPessoa()
     
     /*
-        Inserir cargo de funcionario no banco
+     * Sobrescrita do contrato inserirCargo da interface IManipulacaoBanco
     */
     @Override
     public void inserirCargo(String cargo) throws SQLException {
@@ -63,7 +71,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do metodo inserirCargo()
     
     /*
-        Inserir curso de aluno no banco
+     * Sobrescrita do contrato inserirCurso da interface IManipulacaoBanco
     */
     @Override
     public void inserirCurso(String curso) throws SQLException {
@@ -74,13 +82,13 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do metodo inserirCurso()
     
     /*
-        Retorna todos os dados da tabela pessoa
+     * Sobrescrita do contrato retornarPessoa da interface IManipulacaoBanco
     */
     @Override
-    public ArrayList<modelo.entidade.Pessoa> retornarPessoa() throws SQLException {
+    public ArrayList<modelo.Pessoa> retornarPessoa() throws SQLException {
 		
 	//array list dos dados
-	ArrayList<modelo.entidade.Pessoa> dados = new ArrayList<>();
+	ArrayList<modelo.Pessoa> dados = new ArrayList<>();
 	Pessoa pessoa;
 		
 	//executando a consulta
@@ -123,6 +131,9 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             return dados;
     } // fim do método retornarPessoa()
     
+    /*
+     * Sobrescrita do contrato retornarDadosPessoa da interface IManipulacaoBanco
+    */
     @Override
     public ArrayList<String> retornarDadosPessoa() throws SQLException {
 		
@@ -156,6 +167,9 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             return dados;
     } // fim do método retornarDadosPessoa()
     
+    /*
+     * Sobrescrita do contrato reservarHorario da interface IManipulacaoBanco
+    */
     @Override
     public void reservarHorario(String lab, String cpf, String data, String horaInicial, String horaFinal) throws SQLException {
         setConfirmacao(getConexao().createStatement());
@@ -165,7 +179,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim de reservarHorario()
     
     /*
-        retornar CodPessoa
+     * Sobrescrita do contrato retornarCodPessoa da interface IManipulacaoBanco
     */
     @Override
     public String retornarCodPessoa(String cpf) throws SQLException{
@@ -184,7 +198,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     }
     
     /*
-        Restorna todas as reservas
+     * Sobrescrita do contrato retornarReserva da interface IManipulacaoBanco
     */
     @Override
     public ArrayList<modelo.Reserva> retornarReserva() throws SQLException {
@@ -223,7 +237,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do método retornarReserva()
     
     /*
-        Restorna do laboratorio escolhido
+     * Sobrescrita do contrato retornarReservaLab da interface IManipulacaoBanco
     */
     @Override
     public ArrayList<modelo.Reserva> retornarReservaLab(String lab) throws SQLException {
@@ -262,7 +276,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do método retornarReservaLab()
     
     /*
-        Retorna laboratorios disponiveis
+     * Sobrescrita do contrato retornarLabDisponivel da interface IManipulacaoBanco
     */
     @Override
     public ArrayList<String> retornarLabDisponivel() throws SQLException {
@@ -295,16 +309,25 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             return dados;
     } // fim do método retornarLabDisponivel()
     
+    /*
+     * Sobrescrita do contrato inserirLaboratorio da interface IManipulacaoBanco
+    */
     @Override
     public void inserirLaboratório(String nome) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /*
+     * Sobrescrita do contrato alterarReserva da interface IManipulacaoBanco
+    */
     @Override
     public void alterarReserva() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /*
+     * Sobrescrita do contrato excluirReserva da interface IManipulacaoBanco
+    */
     @Override
     public void excluirReserva() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

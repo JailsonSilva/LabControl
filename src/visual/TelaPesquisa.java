@@ -8,16 +8,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import modelo.ModeloTabela;
 
 /**
- *
- * @author Cloud
+ * Classe para criação da tela de pesquisa
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realese 01 daaplicação
  */
-public class TelaPesquisa extends javax.swing.JPanel implements interfaces.IManipulacaoVisual{
+public class TelaPesquisa extends javax.swing.JPanel{
 
     /**
-     * Creates new form TelaPesquisa
+     * Construtor da classe TelaPesquisa
+     * @author Jailson José dos Santos Silva
      */
     TelaPrincipal tela;
     JPanel novoPainel;
@@ -133,11 +135,11 @@ public class TelaPesquisa extends javax.swing.JPanel implements interfaces.IMani
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        Teste t = new Teste();
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
 
-		t.setConexao(new Conexao());
+		t.setConexao(new Conexao()); // seta os valores para conexão
         try {
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -145,13 +147,14 @@ public class TelaPesquisa extends javax.swing.JPanel implements interfaces.IMani
         }
 		
         try { // pesquisar reservas no banco
-            t.getConexao().retornarReservaLab(this.getBoxLaboratorio().getSelectedItem().toString());
-            ArrayList<modelo.Reserva> dados = t.getConexao().retornarReservaLab(this.getBoxLaboratorio().getSelectedItem().toString());
-            ModeloTabela modelo = new ModeloTabela(dados);
+            t.getConexao().retornarReservaLab(this.getBoxLaboratorio().getSelectedItem().toString()); // captura os dados de retorno se ouver
+            ArrayList<modelo.Reserva> dados = t.getConexao().retornarReservaLab(this.getBoxLaboratorio().getSelectedItem().toString()); // cria um ArrayList com os dados
+
             
             int i = 0;
             ArrayList<String> dadosReserva = new ArrayList();
             
+            // inseri os dados no ArrayList
             while(i < dados.size()){
                 
                 dadosReserva.add("    " + dados.get(i).getLaboratorio() + "    ");
@@ -179,6 +182,10 @@ public class TelaPesquisa extends javax.swing.JPanel implements interfaces.IMani
     private javax.swing.JTextArea tabelaReserva;
     // End of variables declaration//GEN-END:variables
     
+    /**
+     * Método para captura do boxLaboratorio
+     * @return JComboBox - retorna o componente boxLaboratorio
+     */
     public JComboBox getBoxLaboratorio(){
         return comboBoxLaboratorio;
     }

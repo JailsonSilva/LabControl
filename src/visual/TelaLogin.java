@@ -3,8 +3,6 @@ package visual;
 import conexao.Conexao;
 import conexao.Teste;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -12,32 +10,57 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Alucarde
+ * Classe para criação da tela de login
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realese 01 da aplicação
  */
 public class TelaLogin extends javax.swing.JPanel {
-    /**
-     * Creates new form TelaLogin
-     */
+    
     private static String usuario;
     private static String cpf;
     
+    /**
+     * Construtor da classe TelaLogin
+     * @outhor Jailson José dos Santos Silva
+     */
     public TelaLogin() {
         initComponents();
         
     }
     
-    // geter das variaveis
+    /**
+     * Método para captura do atributo usuario
+     * @author Jailson José dos Santos Silva
+     * @return String - retorna o valor contido no atributo usuario
+     */
     public static String getUsuario(){
         return usuario;
     }
+    
+    /**
+     * Método para captura do atributo cpf
+     * @author Jailson José dos Santos Silva
+     * @return String - retorna o valor contido no atributo cpf
+     */
     public static String getCpf(){
         return cpf;
     }
-    // seter da variavel
+    
+    /**
+     * Método para alteração do atributo usuario
+     * @author Jailson José dos Santos Silva
+     * @param usuario String - informa o novo conteudo do atributo usuario
+     */
     public void setUsuario(String usuario){
         this.usuario = usuario;
     }
+    
+    /**
+     * Método para alteração do atributo cpf
+     * @author Jailson José dos Santos Silva
+     * @param cpf String - informa o novo conteudo do atributo cpf
+     */
     public void setCpf(String cpf){
         this.cpf = cpf;
     }
@@ -165,13 +188,14 @@ public class TelaLogin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcessarActionPerformed
+        // cria uma String com o que foi digitado no campo fieldSenha
         String senha = new String(this.getFieldSenha().getPassword());
         
-        Teste t = new Teste();
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
             
-            t.setConexao(new Conexao());
+            t.setConexao(new Conexao()); // seta os valores para conexão
         try {
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -214,10 +238,18 @@ public class TelaLogin extends javax.swing.JPanel {
     private javax.swing.JPanel painelRodape;
     // End of variables declaration//GEN-END:variables
 
-    // geters dos componentes
+    /**
+     * Método para captura do componente fieldCpf
+     * @return JTextField - retorna o componente fieldCpf
+     */
     public JTextField getFieldCpf(){
         return fieldCpf;
     }
+    
+    /**
+     * Método para captura do componente fielSenha
+     * @return JTextField - retorna o componente fieldSenha
+     */
     public JPasswordField getFieldSenha(){
         return fieldSenha;
     }    

@@ -6,16 +6,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.ModeloTabela;
 
 /**
- *
- * @author Cloud
+ * Classe para criação da tela administração
+ * @author Jailson José dos Santos Silva
  */
 public class TelaAdministracao extends javax.swing.JPanel {
 
     /**
-     * Creates new form Inicio
+     * Contrutor da lasse Administracao
      */
     public TelaAdministracao() {
         initComponents();
@@ -157,11 +156,11 @@ public class TelaAdministracao extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarPessoaActionPerformed
-        Teste t = new Teste();
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
 
-		t.setConexao(new Conexao());
+		t.setConexao(new Conexao()); // seta os valores para conexão
         try {
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -169,10 +168,10 @@ public class TelaAdministracao extends javax.swing.JPanel {
         }
 		
         try { // pesquisar pessoas no banco
-            t.getConexao().retornarDadosPessoa();
-            ArrayList<String> dados = t.getConexao().retornarDadosPessoa();
+            t.getConexao().retornarDadosPessoa(); // captura os dados de retorno se ouver
+            ArrayList<String> dados = t.getConexao().retornarDadosPessoa(); // cria um ArrayList com os dados
             
-            this.fieldPessoa.setText("Nome: CPF:        \n\n" + dados);
+            this.fieldPessoa.setText("Nome: CPF:        \n\n" + dados); // inseri uma String na area de exto
             
         } catch (SQLException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -180,21 +179,21 @@ public class TelaAdministracao extends javax.swing.JPanel {
     }//GEN-LAST:event_botaoPesquisarPessoaActionPerformed
 
     private void botaoPesquisarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarLabActionPerformed
-        Teste t = new Teste();
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
 
-		t.setConexao(new Conexao());
+		t.setConexao(new Conexao()); // seta os valores para conexão
         try {
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
-        try { // pesquisar pessoas no banco
+        try { // pesquisar laboratorios disponiveis no banco
                         
-            t.getConexao().retornarLabDisponivel();
-            ArrayList<String> dadosLab = t.getConexao().retornarLabDisponivel();
+            t.getConexao().retornarLabDisponivel(); // captura os dados de retorno se ouver
+            ArrayList<String> dadosLab = t.getConexao().retornarLabDisponivel(); // cria um ArrayList com os dados
             
             this.fieldLaboratorio.setText("Laboratorio:\n\n" + dadosLab);
         } catch (SQLException ex) {

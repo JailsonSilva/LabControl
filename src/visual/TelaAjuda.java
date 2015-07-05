@@ -4,13 +4,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Cloud
+ * Classe para criação da tela ajuda
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realese 01 da aplicação
  */
 public class TelaAjuda extends javax.swing.JPanel {
 
     /**
-     * Creates new form Ajuda
+     * Contrutor da classe Ajuda
      */
     public TelaAjuda() {
         initComponents();
@@ -168,17 +170,30 @@ public class TelaAjuda extends javax.swing.JPanel {
     private javax.swing.JScrollPane scrollDescricao;
     // End of variables declaration//GEN-END:variables
     
-    // geters dos componentes
+    /**
+     * método para captura do componente areaDescricao
+     * @author Jailson José dos Santos Silva
+     * @return JTextArea - retorna o componente areaDescricao
+     */
     public JTextArea getAreaDescricao(){
         return areaDescricao;
     }
+    
+    /**
+     * método para captura do componente fieldEmail
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldEmail
+     */
     public JTextField getFieldEmail(){
         return fieldEmail;
     }
+    
+    /**
+     * método para captura do componente fieldNome
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldNome
+     */
     public JTextField getfieldNome(){
-        return fieldNome;
-    }
-    public JTextField getFieldNome(){
         return fieldNome;
     }
 }

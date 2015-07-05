@@ -4,21 +4,21 @@ import conexao.Conexao;
 import conexao.Teste;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
-import modelo.ModeloTabela;
 
 /**
- *
- * @author Cloud
+ * Classe para criação da tela inicio
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realese 01 da aplicação
  */
 public class TelaInicio extends javax.swing.JPanel {
 
     /**
-     * Creates new form Inicio
+     * Construtor da classe Inicio
+     * @author Jailson José dos Santos Silva
      */
     public TelaInicio() {
         initComponents();
@@ -139,11 +139,11 @@ public class TelaInicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        Teste t = new Teste();
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
 
-		t.setConexao(new Conexao());
+		t.setConexao(new Conexao()); // seta os valores para conexão
         try {
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -151,14 +151,14 @@ public class TelaInicio extends javax.swing.JPanel {
         }
 		
         try { // pesquisar reservas no banco
-            t.getConexao().retornarReserva();
+            t.getConexao().retornarReserva(); // captura os dados de retorno se ouver
             
-            ArrayList<modelo.Reserva> dados = t.getConexao().retornarReserva();
-            ModeloTabela modelo = new ModeloTabela(dados);
+            ArrayList<modelo.Reserva> dados = t.getConexao().retornarReserva(); // cria um ArrayList com os dados
             
             int i = 5;
             ArrayList<String> dadosReserva = new ArrayList();
             
+            // inseri os dados no ArrayList
             while(i > 0){
                 
                 dadosReserva.add("    " + dados.get(i).getLaboratorio() + "    ");
@@ -194,18 +194,37 @@ public class TelaInicio extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
     
-    // geters dos componentes
+    /**
+     * Método paara captura do componente fieldReserva
+     * @author Jailson José dos Santos Silva
+     * @return JTextArea - retorna o componente fieldReserva
+     */
     public JTextArea getFieldReservas(){
         return fieldReservas;
     }
+    
+    /**
+     * método para captura do componente fieldLaboratorio
+     * @author Jailson José dos Santos Silva
+     * @return JTextArea - retorna o componente fieldReserva
+     */
     public JTextArea getFieldLaboratorios(){
         return fieldLaboratorios;
     }
     
-    // seters dos componentes
+    /**
+     * Metodo para alteração do componente fieldReserva
+     * @author Jailson José dos Santos Silva
+     * @param field JTexTArea - passa o novo fieldReservas
+     */
     public void setFieldtReservas(JTextArea field){
         this.fieldReservas = field;
     }
+    
+    /**
+     * Método para alteração do componente fieldLaboratorios
+     * @param field JTextArea - passa o novo fieldLaboratorio
+     */
     public void setFieldLaboratorios(JTextArea field){
         this.fieldLaboratorios = field;
     }

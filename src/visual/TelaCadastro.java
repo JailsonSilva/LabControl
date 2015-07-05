@@ -2,32 +2,24 @@ package visual;
 
 import conexao.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Alucarde
+ * Classe ara criação da tela de cadastro
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realese 01 da aplicação
  */
 public class TelaCadastro extends javax.swing.JPanel {
-
+    
     /**
-     * Creates new form TelaCadastro
+     * Construtos da classe TelaCadastro
      */
-    JDBconexao con;
-    
-    private final String insertPessoa = "INSERT INTO pessoa(nome, cpf, senha) values (test22, 1, 23)";
-            //+  this.getFieldNome().getText() + ", "
-            //+ this.getFieldCpf().getText() + ", "
-            //+ Arrays.toString(this.getFieldSenha().getPassword()) + ")";
-    
     public TelaCadastro() {
         initComponents();
     }
@@ -222,11 +214,11 @@ public class TelaCadastro extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        Teste t = new Teste();
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
 
-		t.setConexao(new Conexao());
+		t.setConexao(new Conexao()); // seta os valores para conexão
         try {
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -274,31 +266,83 @@ public class TelaCadastro extends javax.swing.JPanel {
     private javax.swing.JRadioButton radioButtonFuncionario;
     // End of variables declaration//GEN-END:variables
     
-    // geters dos componentes
+    /**
+     * método para captura do componente categoriaPessoa
+     * @author Jailson José dos Santos Silva
+     * @return ButtonGroup - retorna o componente categoriaPessoa
+     */
     public ButtonGroup getCategoriaPessoa(){
         return categoriaPessoa;
     }
+    
+    /**
+     * método para captura do componente fieldCargo
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldCargo
+     */
     public JTextField getFieldCargo(){
         return fieldCargo;
     }
+    
+    /**
+     * método para captura do componente fieldCpf
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldCpf
+     */
     public JTextField getFieldCpf(){
         return fieldCpf;
     }
+    
+    /**
+     * método para captura do componente fieldCurso
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldCurso
+     */
     public JTextField getFieldCurso(){
         return fieldCurso;
     }
+    
+    /**
+     * método para captura do componente fieldNome
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldNome
+     */
     public JTextField getFieldNome(){
         return fieldNome;
     }
+    
+    /**
+     * método para captura do componente fieldConfSenha
+     * @author Jailson José dos Santos Silva
+     * @return JPasswordField - retorna o componente fieldConfSenha
+     */
     public JPasswordField getFieldConfSenha(){
         return fieldConfSenha;
     }
+    
+    /**
+     * método para captura do componente fieldSenha
+     * @author Jailson José dos Santos Silva
+     * @return JPasswordField - retorna o componente fieldSenha
+     */
     public JPasswordField getFieldSenha(){
         return fieldSenha;
     }
+    
+    /**
+     * método para captura do componente radioButtonAluno
+     * @author Jailson José dos Santos Silva
+     * @return JRadioButton - retorna o componente radioButtonAluno
+     */
     public JRadioButton getRadioButtonAluno(){
         return radioButtonAluno;
     }
+    
+    /**
+     * método para captura do componente radioButtonFuncionario
+     * @author Jailson José dos Santos Silva
+     * @return JRadioButton - retorna o componente radioButtonFuncionario
+     */
     public JRadioButton getRadioButtonFuncionario(){
         return radioButtonFuncionario;
     }

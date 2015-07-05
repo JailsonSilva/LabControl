@@ -16,25 +16,30 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @version 1.0
  * @since realize 01 da aplicação
  */
+public class TelaPrincipal extends javax.swing.JFrame{
 
-public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IManipulacaoVisual{
-
-    /**
-     * Creates new form TelaPrincipal
-     */
     private static boolean logado;
     
+    /**
+     * Contrutor da classe TelaPrincipal
+     */
     public TelaPrincipal() {
         initComponents();
         this.logado = true;
     }
     
-    // geters
+    /**
+     * étodo para captura do atributo logado
+     * @return boolean - retorna a informação se tem algum usuário logado
+     */
     public boolean getLogado(){
         return logado;
     }
     
-    // seters
+    /**
+     * Método para modificação do atributo logado
+     * @param valor boolean - informa o novo valor do atributo
+     */
     public void setLogado(boolean valor){
         logado = valor;
     }
@@ -257,7 +262,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         
         logado = false;
         
-        if(logado == false){
+        if(logado == false){// verifica o valor do atributo logado
             tela.exibirLogin();
         }
         
@@ -270,6 +275,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         
     } // fim do metodo principal 'main'
     
+    /**
+     * Método para exibir um painel do tipo TelaLogin
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirLogin(){
         getContentPane().remove(this.painelPrincipal);
         painelPrincipal = new TelaLogin();
@@ -277,6 +286,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para exibir um painel do tipo TelaInicio
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirInicio(){
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaInicio();
@@ -284,6 +297,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para exibir um painel do tipo TelaCadastro
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirCadastro(){
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaCadastro();
@@ -291,12 +308,22 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para exibir um painel do tipo telaPesquisa
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirPesquisa(){
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaPesquisa();
         getContentPane().add(this.painelPrincipal);
         this.painelPrincipal.revalidate();
     }
+    
+    /**
+     * Método para exibir um painel do tipo TelaReserva
+     * @author Jailson José dos Santos Silva
+     * @throws ParseException 
+     */
     private void exibirReserva() throws ParseException{
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaReserva();
@@ -304,6 +331,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para exibir um painel do tipo telaPrincipal
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirAjuda(){
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaAjuda();
@@ -311,6 +342,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para exibir um painel do tipo telaEmpresa
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirEmpresa(){
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaEmpresa();
@@ -318,6 +353,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para exibir um painel do tipo telaAdministracao
+     * @autor Jailson José dos Santos Silva
+     */
     private void exibirAdmin(){
         getContentPane().remove(this.painelPrincipal);
         this.painelPrincipal = new TelaAdministracao();
@@ -325,6 +364,11 @@ public class TelaPrincipal extends javax.swing.JFrame implements interfaces.IMan
         this.painelPrincipal.revalidate();
     }
     
+    /**
+     * Método para alteração do painel principal
+     * @autor Jailson José dos Santos Silva
+     * @param painel JPainel - informa o novo tipo de painel
+     */
     public void setPainelPrincipal(JPanel painel){
         this.painelPrincipal = painel;
     }

@@ -4,31 +4,34 @@ import conexao.Conexao;
 import conexao.Teste;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 /**
- *
- * @author Alucarde
+ * Classe para criação da tela de reservas dos laboratórios
+ * @author Jailson José dos Santos Silva
+ * @version 1.0
+ * @since realese 01 da aplicação
  */
 public class TelaReserva extends javax.swing.JPanel {
 
     /**
-     * Creates new form Pesquisar
+     * Construtor da classe TelaReserva que inicializa os componentes
      */
-    
-    MaskFormatter formHora;
-    MaskFormatter formData;
+
     public TelaReserva() throws ParseException {
         initComponents();
-        this.formHora = new MaskFormatter("##/##");
-        this.formData = new MaskFormatter("##/##/####");
+
     }
+    
+    /**
+     * Método para formatação de um campos de texto
+     * @param mascara String - informa o tipo de formatação desejado
+     * @return 
+     */
     private MaskFormatter setMascara(String mascara){  
     MaskFormatter mask = null;  
     try{  
@@ -204,15 +207,12 @@ public class TelaReserva extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxLaboratorioActionPerformed
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
-        Teste t = new Teste();
-		
-	System.out.println(getFieldHoraInicial().getText());
-        System.out.println(this.getComboBoxLaboratorio().getToolTipText());
-        
-	t.setConexao(new Conexao());
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
+	
+	t.setConexao(new Conexao()); // seta os valores para conexão
         try {
             
-            t.getConexao().conectar();
+            t.getConexao().conectar(); // conecta ao banco
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -245,16 +245,34 @@ public class TelaReserva extends javax.swing.JPanel {
     private javax.swing.JPanel painelTitulo;
     // End of variables declaration//GEN-END:variables
     
-    // geters dos componentes
+    /**
+     * Método para captura do comboBoxLaboratorio
+     * @return JCombobox - retorna o componente omboBoxLaboratorio
+     */
     public JComboBox getComboBoxLaboratorio(){
         return comboBoxLaboratorio;
     }
+    
+    /**
+     * Método para captura do fieldData
+     * @return JTextField - retorna o componente fieldData
+     */
     public JFormattedTextField getFieldData(){
         return fieldData;
     }
+    
+    /**
+     * Método para captura do fieldHoraInicial
+     * @return JTextField - retorna o componente fieldHoraInicial
+     */
     public JFormattedTextField getFieldHoraInicial(){
         return fieldHoraInicial;
     }
+    
+    /**
+     * Método para captura do fieldHoraFinal
+     * @return JTextField - retorna o componente fieldHoraFinal
+     */
     public JFormattedTextField getFieldHoraFinal(){
         return fieldHoraFinal;
     }
