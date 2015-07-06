@@ -2,7 +2,7 @@ package modelo;
 
 /**
  * Classe para criação de um objeto reserva
- * @author Jailson José dos Santos Silva
+ * @author José Otávio
  * @version 1.0
  * @since realese 01 da aplicação
  */
@@ -16,7 +16,7 @@ public class Reserva {
     
     /**
      * Contrutor da classe Reserva
-     * @author Jailson José dos Santos Silva
+     * @author José Otávio
      * @param laboratorio String - informa o numero do laboratorio
      * @param idPessoa String - informa o indice da pessoa para identificar no banco de ados
      * @param horaInicial String - informa a hora de inicio da reserva
@@ -33,7 +33,7 @@ public class Reserva {
     
     /**
     * Método para captura do atributo laboratorio
-    * @author Jailson José dos Santos Silva
+    * @author José Otávio
     * @return String - retorna o valor do atributo laboratorio
     */
     public String getLaboratorio(){
@@ -42,7 +42,7 @@ public class Reserva {
     
     /**
     * Método para captura do atributo idPessoa
-    * @author Jailson José dos Santos Silva
+    * @author José Otávio
     * @return String - retorna o valor do atributo idPessoa
     */
     public String getIdPessoa(){
@@ -51,7 +51,7 @@ public class Reserva {
     
     /**
     * Método para captura do atributo horaInicial
-    * @author Jailson José dos Santos Silva
+    * @author José Otávio
     * @return String - retorna o valor do atributo horaInicial
     */
     public String getHoraInicial(){
@@ -60,7 +60,7 @@ public class Reserva {
     
     /**
     * Método para captura do atributo horaFinal
-    * @author Jailson José dos Santos Silva
+    * @author José Otávio
     * @return String - retorna o valor do atributo horaFinal
     */
     public String getHoraFinal(){
@@ -69,7 +69,7 @@ public class Reserva {
     
     /**
     * Método para captura do atributo data
-    * @author Jailson José dos Santos Silva
+    * @author José Otávio
     * @return String - retorna o valor do atributo data
     */
     public String getData(){

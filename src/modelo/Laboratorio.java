@@ -2,7 +2,7 @@ package modelo;
 
 /**
  * Classe para criação de um objeto do tipo laboratorio
- * @author Jailson José dos Santos Silva
+ * @author Danilo Bion
  * @version 1.0
  * @since realese 01 da aplicação
  */
@@ -14,7 +14,7 @@ public class Laboratorio {
 	
 	/**
          * Contrutor da classe Laboratorio
-         * @author Jailson José dos Santos Silva
+         * @author Danilo Bion
          * @param id int - indice do objeto
          * @param numero int - numero de identificação
          * @param capacidade - informa a capacidade do laboratorio
@@ -27,7 +27,7 @@ public class Laboratorio {
         
         /**
          * Método para captura do atributo id
-         * @author Jailson José dos Santos Silva
+         * @author Danilo Bion
          * @return int - retorna o valor do atributo id
          */
         public int getId(){
@@ -36,7 +36,7 @@ public class Laboratorio {
         
         /**
          * Método para captura do atributo numero
-         * @author Jailson José dos Santos Silva
+         * @author Danilo Bion
          * @return int - retorna o valor do atributo numero
          */
 	public int getNumero(){
@@ -45,7 +45,7 @@ public class Laboratorio {
         
         /**
          * Método para captura do atributo capacidade
-         * @author Jailson José dos Santos Silva
+         * @author Danilo Bion
          * @return int - retorna o valor do atributo capacidade
          */
 	public int getCapacidade(){
