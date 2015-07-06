@@ -78,7 +78,7 @@ public class TelaLogin extends javax.swing.JPanel {
         fieldSenha = new javax.swing.JPasswordField();
         labelCpf = new javax.swing.JLabel();
         labelSenha = new javax.swing.JLabel();
-        labelTitilo = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         labelLogar = new javax.swing.JLabel();
         painelRodape = new javax.swing.JPanel();
         labelCadastrar = new javax.swing.JLabel();
@@ -107,10 +107,10 @@ public class TelaLogin extends javax.swing.JPanel {
         labelSenha.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         labelSenha.setText("Senha:");
 
-        labelTitilo.setFont(new java.awt.Font("Tahoma", 0, 60)); // NOI18N
-        labelTitilo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitilo.setText("LabControl");
-        labelTitilo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 0, 60)); // NOI18N
+        labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTitulo.setText("LabControl");
+        labelTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         labelLogar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         labelLogar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -163,13 +163,13 @@ public class TelaLogin extends javax.swing.JPanel {
                                 .addComponent(labelSenha)))))
                 .addContainerGap(181, Short.MAX_VALUE))
             .addComponent(painelRodape, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
-            .addComponent(labelTitilo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
+            .addComponent(labelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(labelTitilo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
                 .addComponent(labelLogar)
                 .addGap(35, 35, 35)
@@ -234,7 +234,7 @@ public class TelaLogin extends javax.swing.JPanel {
     private javax.swing.JLabel labelCpf;
     private javax.swing.JLabel labelLogar;
     private javax.swing.JLabel labelSenha;
-    private javax.swing.JLabel labelTitilo;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel painelRodape;
     // End of variables declaration//GEN-END:variables
 

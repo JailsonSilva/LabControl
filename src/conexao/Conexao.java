@@ -261,12 +261,12 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             while (getRetorno().next()){
                 
                 String laboratorio = getRetorno().getString("laboratorio");
-                String nome = getRetorno().getString("nome");
+                String idPessoa = getRetorno().getString("idPessoa");
                 String horaInicial = getRetorno().getString("horaInicial");
                 String horaFinal = getRetorno().getString("horaFinal");
                 String data = getRetorno().getString("data");
                 
-                mReserva = new Reserva(laboratorio, nome, horaInicial, horaFinal, data);
+                mReserva = new Reserva(laboratorio, idPessoa, horaInicial, horaFinal, data);
                 
                 dados.add(mReserva);
             }
