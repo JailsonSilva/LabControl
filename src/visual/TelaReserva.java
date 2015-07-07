@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -63,6 +65,8 @@ public class TelaReserva extends javax.swing.JPanel {
         painelRodape = new javax.swing.JPanel();
         botaoConfirmar = new javax.swing.JButton();
         labelReserva = new javax.swing.JLabel();
+        labelCpf = new javax.swing.JLabel();
+        fieldCpf = new javax.swing.JTextField();
 
         comboBoxLaboratorio.setEditable(true);
         comboBoxLaboratorio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -150,6 +154,11 @@ public class TelaReserva extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
+        labelCpf.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelCpf.setText("Cpf:");
+
+        fieldCpf.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,10 +168,6 @@ public class TelaReserva extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(221, 221, 221)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelLaboratorio)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboBoxLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelData)
                         .addGap(18, 18, 18)
@@ -174,14 +179,27 @@ public class TelaReserva extends javax.swing.JPanel {
                         .addGap(116, 116, 116)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelHoraFinal))))
+                            .addComponent(labelHoraFinal)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelCpf)
+                            .addGap(18, 18, 18)
+                            .addComponent(fieldCpf))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(labelLaboratorio)
+                            .addGap(18, 18, 18)
+                            .addComponent(comboBoxLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCpf)
+                    .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLaboratorio)
                     .addComponent(comboBoxLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,7 +215,7 @@ public class TelaReserva extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(painelRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -216,15 +234,17 @@ public class TelaReserva extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            // exibe se não for possivel se conectar ao banco
+            JOptionPane.showMessageDialog(null, "Não foi possivel se conectar ao banco de dados!"); 
         }
 		
         try { // Reservar horario do laboratorio
             
-            t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), TelaLogin.getCpf(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
+            t.getConexao().reservarHorario(this.getComboBoxLaboratorio().getSelectedItem().toString(), this.getFieldCpf().getText(),getFieldData().getText(), this.getFieldHoraInicial().getText(), this.getFieldHoraFinal().getText());
+            JOptionPane.showMessageDialog(null, "Reserva Realixada com sucesso!"); // exibe se a reserva for realixada
             
             } catch (SQLException ex) {
-            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Não foi possivel realizar a reserva!"); // exibe se a reserva não for realizada
         } // fim de inserir pessoa
     }//GEN-LAST:event_botaoConfirmarActionPerformed
     
@@ -232,9 +252,11 @@ public class TelaReserva extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoConfirmar;
     private javax.swing.JComboBox comboBoxLaboratorio;
+    private javax.swing.JTextField fieldCpf;
     private javax.swing.JFormattedTextField fieldData;
     private javax.swing.JFormattedTextField fieldHoraFinal;
     private javax.swing.JFormattedTextField fieldHoraInicial;
+    private javax.swing.JLabel labelCpf;
     private javax.swing.JLabel labelData;
     private javax.swing.JLabel labelHoraFinal;
     private javax.swing.JLabel labelHoraInicial;
@@ -245,6 +267,14 @@ public class TelaReserva extends javax.swing.JPanel {
     private javax.swing.JPanel painelTitulo;
     // End of variables declaration//GEN-END:variables
     
+    /**
+     * Método para captura de componente fieldCpf
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna ocomponente fieldCpf
+     */
+    public JTextField getFieldCpf(){
+        return fieldCpf;
+    }
     /**
      * Método para captura do comboBoxLaboratorio
      * @return JCombobox - retorna o componente omboBoxLaboratorio

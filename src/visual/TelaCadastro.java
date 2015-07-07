@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -238,7 +239,7 @@ public class TelaCadastro extends javax.swing.JPanel {
             } // fim inserir cargo
             
         } catch (SQLException ex) {
-            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "O cpf informado ja esta cadastrado!" +ex);
         } // fim de inserir pessoa
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
