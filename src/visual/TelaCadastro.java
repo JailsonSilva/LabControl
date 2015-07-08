@@ -237,9 +237,9 @@ public class TelaCadastro extends javax.swing.JPanel {
             else if(this.getRadioButtonFuncionario().isSelected()){ // inserir cargo
                 t.getConexao().inserirCargo(this.getFieldCargo().getText());
             } // fim inserir cargo
-            
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "O cpf informado ja esta cadastrado!" +ex);
+            JOptionPane.showMessageDialog(null, "O cpf informado ja esta cadastrado!");
         } // fim de inserir pessoa
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 

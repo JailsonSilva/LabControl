@@ -155,11 +155,11 @@ public class TelaInicio extends javax.swing.JPanel {
             
             ArrayList<modelo.Reserva> dados = t.getConexao().retornarReserva(); // cria um ArrayList com os dados
             
-            int i = 5;
+            int i = dados.size() - 1;
             ArrayList<String> dadosReserva = new ArrayList();
             
             // inseri os dados no ArrayList
-            while(i > 0){
+            while(i >= dados.size() - 5){
                 
                 dadosReserva.add("    " + dados.get(i).getLaboratorio() + "    ");
                 dadosReserva.add(dados.get(i).getIdPessoa());
