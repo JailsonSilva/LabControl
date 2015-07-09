@@ -179,6 +179,43 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim de reservarHorario()
     
     /*
+     * Sobrescrita do contrato listarReservaIndividual da interface IManipulacaoBanco
+    */
+    @Override
+    public ArrayList<modelo.Reserva> listarReservaIndividual(String cpf) throws SQLException{
+    
+    	ArrayList<modelo.Reserva> dados = new ArrayList<>();
+    	setConfirmacao(getConexao().createStatement());
+    	Reserva mReserva;
+    	String codPessoa = retornarCodPessoa(cpf);	
+    	
+        setRetorno(getConfirmacao().executeQuery("select * from reserva,pessoa  where idPessoa=codPessoa"));
+    		
+    	if (getRetorno().next()) {
+    			
+            getRetorno().previous();
+    		
+            while (getRetorno().next()){
+                    
+                String laboratorio = getRetorno().getString("laboratorio");
+                String idPessoa = getRetorno().getString("idPessoa");
+                String horaInicial = getRetorno().getString("horaInicial");
+                String horaFinal = getRetorno().getString("horaFinal");
+                String data = getRetorno().getString("data");
+                String idReserva = getRetorno().getString("idReserva");//para pegar o id das reservas
+                    
+                mReserva = new Reserva(laboratorio, idPessoa, horaInicial, horaFinal, data);//tem q mostra o id da reserva pra poder chamar o metodo de alterar
+                    
+                dados.add(mReserva);                    
+            }
+        }		
+        //retornando
+        return dados;
+    } // fim do método listarReservaIndividual()
+    
+    
+    
+    /*
      * Sobrescrita do contrato retornarCodPessoa da interface IManipulacaoBanco
     */
     @Override
@@ -195,7 +232,7 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
         else{
             return null;
         }
-    }
+    } // fim do método retornarCodPessoa()
     
     /*
      * Sobrescrita do contrato retornarReserva da interface IManipulacaoBanco
@@ -321,9 +358,21 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
      * Sobrescrita do contrato alterarReserva da interface IManipulacaoBanco
     */
     @Override
-    public void alterarReserva() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void alterarReserva(String cpf,String idReserva,String lab,String data,String horaInicial,String horaFinal) throws SQLException{
+    	
+		listarReservaIndividual(cpf);//so pra mostrar as reservas dele mais eh melhor ser chamado antes por um botao
+    								  // na tela pra ele poder ver o idReserva e colocar nos dados
+    		setRetorno(getConfirmacao().executeQuery("" +"select idpessoa from labcontrol.pessoa,laboratorio.reserva "
+    			+"where select codPessoa from labcontrol.pessoa where cpf = " + cpf + ";"));
+    		String codPessoa= getRetorno().getString("codPessoa");
+    		String idPessoa = getRetorno().getString("idPessoa");
+		String idR = getRetorno().getString("idREserva");
+    
+    		String sql = "update into reserva(laboratorio, idPessoa, data, horaInicial, horaFinal) values ('"+lab+"', '"+codPessoa+"', '"+data+"', '"+horaInicial+"', '"+horaFinal+"'); " 
+    			+"Where "+codPessoa+"="+idPessoa+" and "+idR+"= idReserva";
+        	getConfirmacao().executeUpdate(sql);
+    	
+	}
     
     /*
      * Sobrescrita do contrato excluirReserva da interface IManipulacaoBanco

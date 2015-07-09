@@ -67,6 +67,28 @@ public interface IManipulaBanco {
         void reservarHorario(String lab, String cpf, String data, String horaInicial, String horaFinal) throws SQLException;
         
         /**
+         * Contrato para listar as reservas feitas por uma determinada pessoa
+         * @author Denney Wesley
+         * @param cpf
+         * @return
+         * @throws SQLException 
+         */
+        ArrayList<modelo.Reserva> listarReservaIndividual(String cpf) throws SQLException;
+        
+        /**
+         * Contrato contendo para alterar os dados de uma reserva
+         * @author Denney Wesley
+         * @param cpf
+         * @param idReserva
+         * @param lab
+         * @param data
+         * @param horaInicial
+         * @param horaFinal
+         * @throws SQLException 
+         */
+        void alterarReserva(String cpf,String idReserva,String lab,String data,String horaInicial,String horaFinal) throws SQLException;
+ 
+        /**
          * Contrato para verificação de cadastro de pessoa
          * @author Jailson José dos Santos Silva
          * @param cpf String - informa o cpf a ser verificado
@@ -74,13 +96,6 @@ public interface IManipulaBanco {
          * @throws SQLException 
          */
         String retornarCodPessoa(String cpf) throws SQLException;
-        
-        /**
-         * Contrato ontendo informações para alteração de uma reserva
-         * @author Jailson José dos Santos Silva
-         * @throws SQLException 
-         */
-        void alterarReserva() throws SQLException;
         
         /**
          * Contrato para excluir uma reserva

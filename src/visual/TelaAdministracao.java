@@ -32,7 +32,6 @@ public class TelaAdministracao extends javax.swing.JPanel {
         buttonEscolha = new javax.swing.ButtonGroup();
         painelTitulo = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
-        painelRodape = new javax.swing.JPanel();
         botaoPesquisarPessoa = new javax.swing.JButton();
         labelPessoasCadastrdas = new javax.swing.JLabel();
         labelPessoasCadastrdas1 = new javax.swing.JLabel();
@@ -41,6 +40,25 @@ public class TelaAdministracao extends javax.swing.JPanel {
         fieldPessoa = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         fieldLaboratorio = new javax.swing.JTextArea();
+        labelCadastros = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        botaoPesquisarLabMaisUsados = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        fieldLabMaisUsados = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        labelInformacao = new javax.swing.JLabel();
+        botaoAlterarPessoa = new javax.swing.JButton();
+        labelPessoa = new javax.swing.JLabel();
+        fieldAlterarPessoa = new javax.swing.JTextField();
+        labelLaboratorio = new javax.swing.JLabel();
+        botaoAlterarLab = new javax.swing.JButton();
+        botaoAlterarReserva = new javax.swing.JButton();
+        fieldAlterarLab = new javax.swing.JTextField();
+        fieldAlterarReserva = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        labelLaboratorio1 = new javax.swing.JLabel();
 
         painelTitulo.setPreferredSize(new java.awt.Dimension(571, 90));
 
@@ -54,26 +72,13 @@ public class TelaAdministracao extends javax.swing.JPanel {
             .addGroup(painelTituloLayout.createSequentialGroup()
                 .addGap(350, 350, 350)
                 .addComponent(labelTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         painelTituloLayout.setVerticalGroup(
             painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTituloLayout.createSequentialGroup()
                 .addGap(0, 46, Short.MAX_VALUE)
                 .addComponent(labelTitulo))
-        );
-
-        painelRodape.setPreferredSize(new java.awt.Dimension(0, 90));
-
-        javax.swing.GroupLayout painelRodapeLayout = new javax.swing.GroupLayout(painelRodape);
-        painelRodape.setLayout(painelRodapeLayout);
-        painelRodapeLayout.setHorizontalGroup(
-            painelRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 105, Short.MAX_VALUE)
-        );
-        painelRodapeLayout.setVerticalGroup(
-            painelRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
         );
 
         botaoPesquisarPessoa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -85,10 +90,10 @@ public class TelaAdministracao extends javax.swing.JPanel {
         });
 
         labelPessoasCadastrdas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelPessoasCadastrdas.setText("Pessoas cadastradas:");
+        labelPessoasCadastrdas.setText("Pessoas:");
 
         labelPessoasCadastrdas1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelPessoasCadastrdas1.setText("Laboratórios Cadastrados:");
+        labelPessoasCadastrdas1.setText("Laboratórios:");
 
         botaoPesquisarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         botaoPesquisarLab.setText("Pesquisar");
@@ -106,52 +111,181 @@ public class TelaAdministracao extends javax.swing.JPanel {
         fieldLaboratorio.setRows(5);
         jScrollPane2.setViewportView(fieldLaboratorio);
 
+        labelCadastros.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelCadastros.setText("Cadastros:");
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Laboratóriosmais utilizados:");
+
+        botaoPesquisarLabMaisUsados.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botaoPesquisarLabMaisUsados.setText("Pesquisar");
+        botaoPesquisarLabMaisUsados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPesquisarLabMaisUsadosActionPerformed(evt);
+            }
+        });
+
+        fieldLabMaisUsados.setColumns(20);
+        fieldLabMaisUsados.setRows(5);
+        jScrollPane3.setViewportView(fieldLabMaisUsados);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("Alterar Informações:");
+
+        labelInformacao.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelInformacao.setText("Informações:");
+
+        botaoAlterarPessoa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botaoAlterarPessoa.setText("Alterar");
+        botaoAlterarPessoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAlterarPessoaActionPerformed(evt);
+            }
+        });
+
+        labelPessoa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelPessoa.setText("Pessoa:");
+
+        fieldAlterarPessoa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        labelLaboratorio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelLaboratorio.setText("Laboratório:");
+
+        botaoAlterarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botaoAlterarLab.setText("Alterar");
+        botaoAlterarLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAlterarLabActionPerformed(evt);
+            }
+        });
+
+        botaoAlterarReserva.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botaoAlterarReserva.setText("Alterar");
+        botaoAlterarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAlterarReservaActionPerformed(evt);
+            }
+        });
+
+        fieldAlterarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        fieldAlterarReserva.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        labelLaboratorio1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelLaboratorio1.setText("Reserva:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelCadastros)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelPessoasCadastrdas1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoPesquisarLab))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelPessoasCadastrdas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoPesquisarPessoa))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jSeparator2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(painelRodape, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                        .addComponent(botaoPesquisarLabMaisUsados))
+                    .addComponent(labelInformacao)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelLaboratorio1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fieldAlterarReserva))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelPessoa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fieldAlterarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelLaboratorio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fieldAlterarLab)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelPessoasCadastrdas1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botaoPesquisarLab))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelPessoasCadastrdas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botaoPesquisarPessoa)))
-                        .addContainerGap())))
+                            .addComponent(botaoAlterarReserva)
+                            .addComponent(botaoAlterarLab)
+                            .addComponent(botaoAlterarPessoa)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoPesquisarPessoa)
-                    .addComponent(labelPessoasCadastrdas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoPesquisarLab)
-                    .addComponent(labelPessoasCadastrdas1))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(painelRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelCadastros)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(botaoPesquisarPessoa)
+                                    .addComponent(labelPessoasCadastrdas))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(botaoPesquisarLab)
+                                    .addComponent(labelPessoasCadastrdas1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelInformacao)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(botaoPesquisarLabMaisUsados))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPessoa)
+                            .addComponent(fieldAlterarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoAlterarPessoa))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelLaboratorio)
+                            .addComponent(fieldAlterarLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoAlterarLab))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldAlterarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoAlterarReserva)
+                            .addComponent(labelLaboratorio1))
+                        .addGap(72, 72, 72))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -201,19 +335,53 @@ public class TelaAdministracao extends javax.swing.JPanel {
         } // fim da pesquisa de pessoas cadastradas
     }//GEN-LAST:event_botaoPesquisarLabActionPerformed
 
+    private void botaoPesquisarLabMaisUsadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarLabMaisUsadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoPesquisarLabMaisUsadosActionPerformed
+
+    private void botaoAlterarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarPessoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoAlterarPessoaActionPerformed
+
+    private void botaoAlterarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarLabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoAlterarLabActionPerformed
+
+    private void botaoAlterarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarReservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoAlterarReservaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAlterarLab;
+    private javax.swing.JButton botaoAlterarPessoa;
+    private javax.swing.JButton botaoAlterarReserva;
     private javax.swing.JButton botaoPesquisarLab;
+    private javax.swing.JButton botaoPesquisarLabMaisUsados;
     private javax.swing.JButton botaoPesquisarPessoa;
     private javax.swing.ButtonGroup buttonEscolha;
+    private javax.swing.JTextField fieldAlterarLab;
+    private javax.swing.JTextField fieldAlterarPessoa;
+    private javax.swing.JTextField fieldAlterarReserva;
+    private javax.swing.JTextArea fieldLabMaisUsados;
     private javax.swing.JTextArea fieldLaboratorio;
     private javax.swing.JTextArea fieldPessoa;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel labelCadastros;
+    private javax.swing.JLabel labelInformacao;
+    private javax.swing.JLabel labelLaboratorio;
+    private javax.swing.JLabel labelLaboratorio1;
+    private javax.swing.JLabel labelPessoa;
     private javax.swing.JLabel labelPessoasCadastrdas;
     private javax.swing.JLabel labelPessoasCadastrdas1;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JPanel painelRodape;
     private javax.swing.JPanel painelTitulo;
     // End of variables declaration//GEN-END:variables
 
