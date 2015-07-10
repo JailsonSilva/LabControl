@@ -381,4 +381,67 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     public void excluirReserva() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public ArrayList<String> labsMaisUsados()throws SQLException{
+        
+        ArrayList<String> dados = new ArrayList<>();
+	Reserva mReserva;
+		
+	//executando a consulta
+	setConfirmacao(getConexao().createStatement());
+
+    	setRetorno(getConfirmacao().executeQuery("Limit 03" +"Select numero.L, count(*)\n" +"From Laboratorio L, Reserva R\n" +"Where L.numero = R. laboratorio\n" +"Group by numero.l\n" +
+                "Order by count desc"));
+		
+	//testando se houve retorno
+	if (getRetorno().next()) {
+			
+            //colocando no primeiro registro
+            getRetorno().previous();
+			
+            //recuperando todos os dados
+            while (getRetorno().next()){
+                
+                String dado = getRetorno().getString("numero");
+                dados.add(dado + "\n");
+                
+                
+            }
+        
+    }
+        return dados;
 }
+
+    @Override
+    public ArrayList<String> reservaCurso()throws SQLException{
+        
+        ArrayList<String> dados = new ArrayList<>();
+	Reserva mReserva;
+		
+	//executando a consulta
+	setConfirmacao(getConexao().createStatement());
+
+    	setRetorno(getConfirmacao().executeQuery("Select curso.A, nome.A, cont(idReserva.R)"+"From Aluno A, Reserva R\n" +"Where A.codPessoa = R. Reserva\n" +"Group by curso.A\n" ));
+                
+          
+		
+	//testando se houve retorno
+	if (getRetorno().next()) {
+			
+            //colocando no primeiro registro
+            getRetorno().previous();
+			
+            //recuperando todos os dados
+            while (getRetorno().next()){
+                
+                String dado = getRetorno().getString("curso");
+                dados.add(dado + "\n");
+                
+                
+            }
+        
+    }
+        return dados;
+
+}}

@@ -144,5 +144,8 @@ public interface IManipulaBanco {
          * @throws SQLException 
          */
         ArrayList<String> retornarLabDisponivel() throws SQLException;
+        
+        ArrayList<String> labsMaisUsados()throws SQLException;
+        ArrayList<String> reservaCurso()throws SQLException;
 
 }
