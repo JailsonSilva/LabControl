@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  * Classe para criação da tela administração
@@ -49,16 +52,17 @@ public class TelaAdministracao extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         labelInformacao = new javax.swing.JLabel();
         botaoAlterarPessoa = new javax.swing.JButton();
-        labelPessoa = new javax.swing.JLabel();
-        fieldAlterarPessoa = new javax.swing.JTextField();
-        labelLaboratorio = new javax.swing.JLabel();
-        botaoAlterarLab = new javax.swing.JButton();
-        botaoAlterarReserva = new javax.swing.JButton();
-        fieldAlterarLab = new javax.swing.JTextField();
-        fieldAlterarReserva = new javax.swing.JTextField();
+        labelCpf = new javax.swing.JLabel();
+        fieldCpf = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        labelLaboratorio1 = new javax.swing.JLabel();
+        labelNome = new javax.swing.JLabel();
+        fieldNome = new javax.swing.JTextField();
+        labelSenha = new javax.swing.JLabel();
+        labelDadosAlterados = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        labelDicaAlteracao = new javax.swing.JLabel();
+        fieldSenha = new javax.swing.JPasswordField();
 
         painelTitulo.setPreferredSize(new java.awt.Dimension(571, 90));
 
@@ -72,7 +76,7 @@ public class TelaAdministracao extends javax.swing.JPanel {
             .addGroup(painelTituloLayout.createSequentialGroup()
                 .addGap(350, 350, 350)
                 .addComponent(labelTitulo)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
         painelTituloLayout.setVerticalGroup(
             painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +121,7 @@ public class TelaAdministracao extends javax.swing.JPanel {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Laboratóriosmais utilizados:");
+        jLabel1.setText("Uso dos laboratórios:");
 
         botaoPesquisarLabMaisUsados.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         botaoPesquisarLabMaisUsados.setText("Pesquisar");
@@ -145,42 +149,32 @@ public class TelaAdministracao extends javax.swing.JPanel {
             }
         });
 
-        labelPessoa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelPessoa.setText("Pessoa:");
+        labelCpf.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelCpf.setText("CPF:");
 
-        fieldAlterarPessoa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        fieldCpf.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        labelLaboratorio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelLaboratorio.setText("Laboratório:");
+        labelNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelNome.setText("Nome:");
 
-        botaoAlterarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        botaoAlterarLab.setText("Alterar");
-        botaoAlterarLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAlterarLabActionPerformed(evt);
-            }
-        });
+        fieldNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        botaoAlterarReserva.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        botaoAlterarReserva.setText("Alterar");
-        botaoAlterarReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAlterarReservaActionPerformed(evt);
-            }
-        });
+        labelSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelSenha.setText("Senha:");
 
-        fieldAlterarLab.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelDadosAlterados.setText("Dados que para serem alterados;");
 
-        fieldAlterarReserva.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setText("jLabel6");
 
-        labelLaboratorio1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelLaboratorio1.setText("Reserva:");
+        labelDicaAlteracao.setText("CPF da pessoa que tera os dados alterados;");
+
+        fieldSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
+            .addComponent(painelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -200,92 +194,96 @@ public class TelaAdministracao extends javax.swing.JPanel {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoPesquisarLabMaisUsados))
-                    .addComponent(labelInformacao)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelLaboratorio1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fieldAlterarReserva))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelPessoa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fieldAlterarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelLaboratorio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fieldAlterarLab)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoAlterarReserva)
-                            .addComponent(botaoAlterarLab)
-                            .addComponent(botaoAlterarPessoa)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelNome)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(fieldNome))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(173, 173, 173)
+                            .addComponent(botaoAlterarPessoa))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel6))
+                        .addComponent(labelInformacao)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelCpf)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fieldCpf))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoPesquisarLabMaisUsados))
+                        .addComponent(jSeparator3)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelSenha)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(fieldSenha)))
+                    .addComponent(labelDadosAlterados)
+                    .addComponent(labelDicaAlteracao))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelCadastros)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(botaoPesquisarPessoa)
-                                    .addComponent(labelPessoasCadastrdas))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(botaoPesquisarLab)
-                                    .addComponent(labelPessoasCadastrdas1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator1))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelInformacao)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(botaoPesquisarLabMaisUsados))))
+                        .addComponent(labelInformacao)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoPesquisarLabMaisUsados)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPessoa)
-                            .addComponent(fieldAlterarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoAlterarPessoa))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelLaboratorio)
-                            .addComponent(fieldAlterarLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoAlterarLab))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelDicaAlteracao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelCpf))
+                                .addGap(4, 4, 4)
+                                .addComponent(labelDadosAlterados)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelNome)
+                                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelSenha)
+                                    .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoAlterarPessoa))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelCadastros)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldAlterarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoAlterarReserva)
-                            .addComponent(labelLaboratorio1))
-                        .addGap(72, 72, 72))))
+                            .addComponent(botaoPesquisarPessoa)
+                            .addComponent(labelPessoasCadastrdas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoPesquisarLab)
+                            .addComponent(labelPessoasCadastrdas1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1))
+                .addGap(0, 103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -331,43 +329,79 @@ public class TelaAdministracao extends javax.swing.JPanel {
             
             this.fieldLaboratorio.setText("Laboratorio:\n\n" + dadosLab);
         } catch (SQLException ex) {
-            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
-        } // fim da pesquisa de pessoas cadastradas
+            JOptionPane.showMessageDialog(null, "Não foi possível realizar a pesquisa!");
+        } // fim da pesquisa de laboratorios disponiveis no banco
     }//GEN-LAST:event_botaoPesquisarLabActionPerformed
 
     private void botaoPesquisarLabMaisUsadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarLabMaisUsadosActionPerformed
-        // TODO add your handling code here:
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
+
+		t.setConexao(new Conexao()); // seta os valores para conexão
+        try {
+            t.getConexao().conectar(); // conecta ao banco
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        try { // pesquisar laboratorios mais reservados
+                        
+            t.getConexao().labsMaisUsados(); // captura os dados de retorno se ouver
+            ArrayList<String> dadosLab = t.getConexao().labsMaisUsados(); // cria um ArrayList com os dados
+            
+            this.fieldLabMaisUsados.setText("Laboratorio: Nº de reservas\n\n" + dadosLab);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível realizar a pesquisa!");
+        } // fim da pesquisa de laboratorios mais reservados
     }//GEN-LAST:event_botaoPesquisarLabMaisUsadosActionPerformed
 
     private void botaoAlterarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarPessoaActionPerformed
-        // TODO add your handling code here:
+        Teste t = new Teste(); // instancia Teste paara fazer a conexao
+
+		t.setConexao(new Conexao()); // seta os valores para conexão
+        try {
+            t.getConexao().conectar(); // conecta ao banco
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        try { // altera os dados de uma pessoa 
+            
+            String senha = new String(this.getFieldSenha().getPassword()); // cria uma string com a senha
+            
+            if(this.fieldCpf.getText() == null || "".equals(this.fieldCpf.getText())){ // checa se o usuario informou o cpf
+                JOptionPane.showMessageDialog(null, "Por favor digite o cpf da pessoa!"); // se não informou mostra essa mensagem
+            }else{ // se informou executa essa ação
+                
+                
+                t.getConexao().alterarPessoa(this.fieldCpf.getText(), this.fieldNome.getText(), senha); // altera os dados informados
+                JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
+            }            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível realizar a alteração!");
+        } // fim da alteração de dados de uma pessoa
     }//GEN-LAST:event_botaoAlterarPessoaActionPerformed
-
-    private void botaoAlterarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarLabActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoAlterarLabActionPerformed
-
-    private void botaoAlterarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarReservaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoAlterarReservaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoAlterarLab;
     private javax.swing.JButton botaoAlterarPessoa;
-    private javax.swing.JButton botaoAlterarReserva;
     private javax.swing.JButton botaoPesquisarLab;
     private javax.swing.JButton botaoPesquisarLabMaisUsados;
     private javax.swing.JButton botaoPesquisarPessoa;
     private javax.swing.ButtonGroup buttonEscolha;
-    private javax.swing.JTextField fieldAlterarLab;
-    private javax.swing.JTextField fieldAlterarPessoa;
-    private javax.swing.JTextField fieldAlterarReserva;
+    private javax.swing.JTextField fieldCpf;
     private javax.swing.JTextArea fieldLabMaisUsados;
     private javax.swing.JTextArea fieldLaboratorio;
+    private javax.swing.JTextField fieldNome;
     private javax.swing.JTextArea fieldPessoa;
+    private javax.swing.JPasswordField fieldSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -375,15 +409,42 @@ public class TelaAdministracao extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelCadastros;
+    private javax.swing.JLabel labelCpf;
+    private javax.swing.JLabel labelDadosAlterados;
+    private javax.swing.JLabel labelDicaAlteracao;
     private javax.swing.JLabel labelInformacao;
-    private javax.swing.JLabel labelLaboratorio;
-    private javax.swing.JLabel labelLaboratorio1;
-    private javax.swing.JLabel labelPessoa;
+    private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelPessoasCadastrdas;
     private javax.swing.JLabel labelPessoasCadastrdas1;
+    private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel painelTitulo;
     // End of variables declaration//GEN-END:variables
-
     
+    /**
+     * Método paara captura do componente fieldCpf
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldCpf
+     */
+    public JTextField getFieldCpf(){
+        return fieldCpf;
+    }
+    
+    /**
+     * Método paara captura do componente fieldNome
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldNome
+     */
+    public JTextField getFieldNome(){
+        return fieldNome;
+    }
+    
+    /**
+     * Método paara captura do componente fieldSenha
+     * @author Jailson José dos Santos Silva
+     * @return JTextField - retorna o componente fieldSenha
+     */
+    public JPasswordField getFieldSenha(){
+        return fieldSenha;
+    }
 }

@@ -168,6 +168,99 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     } // fim do método retornarDadosPessoa()
     
     /*
+     * Sobrescrita do contrato retornarCpfPessoa da interface IManipulacaoBanco
+    */
+    @Override
+    public String retornarCpfPessoa(String cpf) throws SQLException {
+		
+	//array list dos dados
+	String resCpf;
+		
+	//executando a consulta
+	setConfirmacao(getConexao().createStatement());
+
+    	setRetorno(getConfirmacao().executeQuery("select cpf as resCpf from pessoa where cpf = '" + cpf + "'"));
+		
+		
+	//testando se houve retorno
+	if (getRetorno() != null) {
+			
+            //colocando no primeiro registro
+            getRetorno();
+			
+            //recuperando o nome da pessoa                
+            resCpf = getRetorno().getString("resCpf");
+            
+        }else{
+            return null;
+        }		
+        //retornando
+        return resCpf;
+    } // fim do método retornarCpfPessoa()
+    
+    /*
+     * Sobrescrita do contrato retornarNomePessoa da interface IManipulacaoBanco
+    */
+    @Override
+    public String retornarNomePessoa(String cpf) throws SQLException {
+		
+	//array list dos dados
+	String nome;
+		
+	//executando a consulta
+	setConfirmacao(getConexao().createStatement());
+
+    	setRetorno(getConfirmacao().executeQuery("select nome from pessoa where cpf = '" + cpf + "'"));
+		
+		
+	//testando se houve retorno
+	if (getRetorno().next()) {
+			
+            //colocando no primeiro registro
+            getRetorno().previous();
+			
+            //recuperando o nome da pessoa                
+            nome = getRetorno().getString("nome");
+            
+        }else{
+            return null;
+        }		
+        //retornando
+        return nome;
+    } // fim do método retornarNomePessoa()
+    
+    /*
+     * Sobrescrita do contrato retornarSenhaPessoa da interface IManipulacaoBanco
+    */
+    @Override
+    public String retornarSenhaPessoa(String cpf) throws SQLException {
+		
+	//array list dos dados
+	String senha;
+		
+	//executando a consulta
+	setConfirmacao(getConexao().createStatement());
+
+    	setRetorno(getConfirmacao().executeQuery("select senha from pessoa where cpf = '" + cpf + "'"));
+		
+		
+	//testando se houve retorno
+	if (getRetorno().next()) {
+			
+            //colocando no primeiro registro
+            getRetorno().previous();
+			
+            //recuperando o nome da pessoa                
+            senha = getRetorno().getString("senha");
+            
+        }else{
+            return null;
+        }		
+        //retornando
+        return senha;
+    } // fim do método retornarSenhaPessoa()
+    
+    /*
      * Sobrescrita do contrato reservarHorario da interface IManipulacaoBanco
     */
     @Override
@@ -352,7 +445,20 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     @Override
     public void inserirLaboratório(String nome) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    } // fim do método inserirLaboratorio()
+    
+    /*
+     * Sobrescrita do contrato alterarPessoa da interface IManipulacaoBanco
+    */
+    @Override
+    public void alterarPessoa(String cpf, String nome, String senha) throws SQLException{
+    	
+        setConfirmacao(getConexao().createStatement());
+    	String sql = "update pessoa set nome = '" + nome +"', senha = '" +senha+ "' " 
+    		+"Where cpf = " +cpf+ " ";
+        getConfirmacao().executeUpdate(sql);
+    	
+    } // fim dométodo alterarPessoa()
     
     /*
      * Sobrescrita do contrato alterarReserva da interface IManipulacaoBanco
@@ -360,19 +466,11 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
     @Override
     public void alterarReserva(String cpf,String idReserva,String lab,String data,String horaInicial,String horaFinal) throws SQLException{
     	
-		listarReservaIndividual(cpf);//so pra mostrar as reservas dele mais eh melhor ser chamado antes por um botao
-    								  // na tela pra ele poder ver o idReserva e colocar nos dados
-    		setRetorno(getConfirmacao().executeQuery("" +"select idpessoa from labcontrol.pessoa,laboratorio.reserva "
-    			+"where select codPessoa from labcontrol.pessoa where cpf = " + cpf + ";"));
-    		String codPessoa= getRetorno().getString("codPessoa");
-    		String idPessoa = getRetorno().getString("idPessoa");
-		String idR = getRetorno().getString("idREserva");
-    
-    		String sql = "update into reserva(laboratorio, idPessoa, data, horaInicial, horaFinal) values ('"+lab+"', '"+codPessoa+"', '"+data+"', '"+horaInicial+"', '"+horaFinal+"'); " 
-    			+"Where "+codPessoa+"="+idPessoa+" and "+idR+"= idReserva";
-        	getConfirmacao().executeUpdate(sql);
+    	String sql = "update data, horaInicial, horaFinal from reserva R, pessoa P values ('"+data+"', '"+horaInicial+"', '"+horaFinal+"'); " 
+    		+"Where R.idReserva = " +idReserva+ " and idPessoa = (select codPessoa From pessoa where cpf = " +cpf+ ");";
+        getConfirmacao().executeUpdate(sql);
     	
-	}
+    } // fim dométodo alterarReserva()
     
     /*
      * Sobrescrita do contrato excluirReserva da interface IManipulacaoBanco
@@ -382,6 +480,9 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /*
+     * Sobrescrita do contrato labsMaisUsados da interface IManipulacaoBanco
+    */
     @Override
     public ArrayList<String> labsMaisUsados()throws SQLException{
         
@@ -391,8 +492,8 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
 	//executando a consulta
 	setConfirmacao(getConexao().createStatement());
 
-    	setRetorno(getConfirmacao().executeQuery("Limit 03" +"Select numero.L, count(*)\n" +"From Laboratorio L, Reserva R\n" +"Where L.numero = R. laboratorio\n" +"Group by numero.l\n" +
-                "Order by count desc"));
+    	setRetorno(getConfirmacao().executeQuery(" Select L.numero, count(*) From Laboratorio L, Reserva R "
+                + "Where L.numero = R.laboratorio Group by L.numero Order by count(R.laboratorio) desc"));
 		
 	//testando se houve retorno
 	if (getRetorno().next()) {
@@ -403,16 +504,20 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
             //recuperando todos os dados
             while (getRetorno().next()){
                 
-                String dado = getRetorno().getString("numero");
-                dados.add(dado + "\n");
+                String numero = getRetorno().getString("numero");
+                dados.add("    " + numero + "    ");
+                String quantidade = getRetorno().getString("count(*)");
+                dados.add("     " + quantidade + "     \n");
                 
                 
             }
-        
-    }
+        }
         return dados;
-}
-
+    } // fim do método labsMaisUsados()
+    
+    /*
+     * Sobrescrita do contrato reservaCurso da interface IManipulacaoBanco
+    */
     @Override
     public ArrayList<String> reservaCurso()throws SQLException{
         
@@ -440,8 +545,8 @@ public class Conexao extends JDBconexao implements IManipulaBanco {
                 
                 
             }
-        
-    }
+        }
         return dados;
-
-}}
+    } // fim do método reservaCurso()
+    
+}

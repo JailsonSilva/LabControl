@@ -75,6 +75,7 @@ public interface IManipulaBanco {
          */
         ArrayList<modelo.Reserva> listarReservaIndividual(String cpf) throws SQLException;
         
+        void alterarPessoa(String cpf, String nome, String senha) throws SQLException;
         /**
          * Contrato contendo para alterar os dados de uma reserva
          * @author Denney Wesley
@@ -121,6 +122,30 @@ public interface IManipulaBanco {
         ArrayList<String> retornarDadosPessoa() throws SQLException;
         
         /**
+         * Contrato que retorna o cpf de uma pessoa apartir do cpf
+         * @param cpf String - informa o cpf da pessoa que se deseja o cpf
+         * @return String - retorna uma String com o cpf da pessoa
+         * @throws SQLException 
+         */
+        String retornarCpfPessoa(String cpf) throws SQLException;
+        
+        /**
+         * Contrato que retorna o nome de uma pessoa apartir do cpf
+         * @param cpf String - informa o cpf da pessoa que se deseja o nome
+         * @return String - retorna uma String com o nome da pessoa
+         * @throws SQLException 
+         */
+        String retornarNomePessoa(String cpf) throws SQLException;
+        
+        /**
+         * Contrato que retorna a senha de uma pessoa apartir do cpf
+         * @param cpf String - informa o cpf da pessoa que se deseja o senha
+         * @return String - retorna uma String com a senha da pessoa
+         * @throws SQLException 
+         */
+        String retornarSenhaPessoa(String cpf) throws SQLException;
+        
+        /**
          * Contrato que retorna todas as reservas realizadas que estejam cadastradas no banc de dados
          * @author Jailson José dos Santos Silva
          * @return ArrayList - retorna uma ArrayListcontendo todas as reservas salvas no banco de dados
@@ -140,12 +165,25 @@ public interface IManipulaBanco {
         /**
          * Contrato que retorna os laboratorios disponiveis atualmente
          * @author Jailson José dos Santos Silva
-         * @return retorna uma ArrayList contendo os laboratorios que estão disponiveis atualmente
+         * @return ArrayList - retorna uma ArrayList contendo os laboratorios que estão disponiveis atualmente
          * @throws SQLException 
          */
         ArrayList<String> retornarLabDisponivel() throws SQLException;
         
+        /**
+         * Contrato que retorna os laboratorios mais usados
+         * @author Amanda Colatino
+         * @return ArrayList - retorna uma ArrayList contendo os laboratorios que foram mais reservados
+         * @throws SQLException 
+         */
         ArrayList<String> labsMaisUsados()throws SQLException;
+        
+        /**
+         * Contrato que retorna as reservas agrupadas por curso
+         * @author Amanda Colatino
+         * @return ArrayList - retorna uma ArrayList contendo as reservas agrupadas por curso
+         * @throws SQLException 
+         */
         ArrayList<String> reservaCurso()throws SQLException;
 
 }
